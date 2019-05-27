@@ -1,0 +1,45 @@
+<header>
+  <nav class="nav nav-masthead justify-content-center">
+    <a class="nav-link" routerLink="/home" routerLinkActive="router-link-active"
+      >Home</a
+    >
+    <a
+      class="nav-link"
+      routerLink="/profile"
+      routerLinkActive="router-link-active"
+      *ngIf="auth.isAuthenticated()"
+    >
+      Profile
+    </a>
+
+    <a
+      class="nav-link"
+      routerLink="/callback"
+      routerLinkActive="router-link-active"
+      *ngIf="auth.isAuthenticated()"
+    >
+      Call Back
+    </a>
+    <a
+      class="nav-link"
+      href="#"
+      (click)="auth.login()"
+      *ngIf="!auth.isAuthenticated()"
+      >Log-In
+    </a>
+    <a
+      class="nav-link"
+      href="#"
+      (click)="auth.logout()"
+      *ngIf="auth.isAuthenticated()"
+      >Log-Out
+    </a>
+  </nav>
+
+  <div class="alert alert-success" *ngIf="auth.isAuthenticated()">
+    You are logged in
+  </div>
+  <div class="alert alert-danger" *ngIf="!auth.isAuthenticated()">
+    You are NOT logged in
+  </div>
+</header>
